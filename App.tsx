@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Code, Layout, Smartphone, Mail, Github, Twitter, Linkedin, Palette, Layers, Zap, ExternalLink, Globe } from 'lucide-react';
 import NeuButton from './components/NeuButton';
 import ChatBot from './components/ChatBot';
+import HeroScene from './components/HeroScene';
 import { SectionId } from './types';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<SectionId>(SectionId.HOME);
+  const [servicesVisible, setServicesVisible] = useState(false);
+  const servicesRef = useRef<HTMLDivElement>(null);
 
-  // Smooth scroll handler
+  // Smooth scroll handler with offset
   const scrollTo = (id: SectionId) => {
     setActiveSection(id);
     const element = document.getElementById(id);
@@ -18,12 +21,32 @@ const App: React.FC = () => {
 
   // Sticky header state
   const [isScrolled, setIsScrolled] = useState(false);
+  
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Intersection Observer for Services Animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setServicesVisible(true);
+          observer.disconnect(); // Only animate once
+        }
+      },
+      { threshold: 0.2 } // Trigger when 20% visible
+    );
+
+    if (servicesRef.current) {
+      observer.observe(servicesRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -61,7 +84,6 @@ const App: React.FC = () => {
               Bắt đầu ngay
             </NeuButton>
           </div>
-          {/* Mobile Menu Icon would go here (simplified for this task) */}
         </div>
       </nav>
 
@@ -69,10 +91,10 @@ const App: React.FC = () => {
       <main className="relative z-10">
 
         {/* HERO SECTION */}
-        <section id={SectionId.HOME} className="min-h-screen flex items-center justify-center pt-20 relative">
+        <section id={SectionId.HOME} className="min-h-screen flex items-center justify-center pt-20 relative scroll-mt-28">
           <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             
-            <div className="space-y-8 animate-in slide-in-from-left duration-1000">
+            <div className="space-y-8 animate-in slide-in-from-left duration-1000 z-20">
               <div className="inline-block px-4 py-2 rounded-full shadow-neu-pressed bg-neu-base text-blue-500 font-semibold text-sm">
                 👋 Freelance Web Designer & Developer
               </div>
@@ -97,73 +119,21 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            {/* 3D Floating Element - Digital World Sphere */}
-            <div className="relative flex justify-center items-center h-[500px] w-full max-w-[500px] mx-auto perspective-1000">
-                
-                {/* Orbit Rings */}
-                <div className="absolute w-[110%] h-[110%] rounded-full border border-blue-400/20 border-dashed animate-[spin_30s_linear_infinite]"></div>
-                <div className="absolute w-[130%] h-[130%] rounded-full border border-purple-400/10 border-dotted animate-[spin_40s_linear_infinite_reverse]"></div>
-
-                {/* Glow Effect */}
-                <div className="absolute inset-0 bg-blue-400/20 blur-[80px] rounded-full mix-blend-multiply"></div>
-
-                {/* Main Sphere */}
-                <div className="relative w-72 h-72 md:w-96 md:h-96 bg-neu-base rounded-full shadow-neu flex items-center justify-center animate-float z-10 overflow-hidden border border-white/40 group">
-                    
-                    {/* Inner Shadow for Sphere 3D Effect */}
-                    <div className="absolute inset-0 rounded-full shadow-[inset_10px_10px_20px_rgba(163,177,198,0.5),inset_-10px_-10px_20px_rgba(255,255,255,0.8)] pointer-events-none z-20"></div>
-
-                    {/* Map Grid Texture */}
-                    <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle, #60a5fa 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-
-                    {/* The Globe Icon representing the map */}
-                    <div className="relative z-10 text-gray-400/40 group-hover:text-blue-400/30 transition-colors duration-700">
-                         <Globe strokeWidth={0.5} className="w-[320px] h-[320px] md:w-[400px] md:h-[400px] animate-[spin_60s_linear_infinite]" />
-                    </div>
-
-                    {/* Active Nodes/Markers */}
-                    <div className="absolute z-10 top-[35%] left-[35%] w-3 h-3 bg-blue-500 rounded-full shadow-[0_0_15px_#3b82f6] animate-pulse"></div>
-                    <div className="absolute z-10 top-[45%] right-[30%] w-2 h-2 bg-purple-500 rounded-full shadow-[0_0_15px_#a855f7] animate-pulse delay-300"></div>
-                    <div className="absolute z-10 bottom-[30%] left-[45%] w-2.5 h-2.5 bg-pink-500 rounded-full shadow-[0_0_15px_#ec4899] animate-pulse delay-700"></div>
-
-                    {/* Digital Connection Lines (SVG) */}
-                    <svg className="absolute inset-0 w-full h-full z-10 pointer-events-none">
-                       <path d="M 140 140 Q 200 180 260 180" stroke="url(#gradientLine)" strokeWidth="1.5" fill="none" className="opacity-60" />
-                       <defs>
-                         <linearGradient id="gradientLine" x1="0%" y1="0%" x2="100%" y2="0%">
-                           <stop offset="0%" stopColor="#3b82f6" stopOpacity="0" />
-                           <stop offset="50%" stopColor="#3b82f6" stopOpacity="1" />
-                           <stop offset="100%" stopColor="#a855f7" stopOpacity="0" />
-                         </linearGradient>
-                       </defs>
-                    </svg>
-
-                    {/* Floating Info Badge */}
-                    <div className="absolute z-30 bottom-12 bg-white/40 backdrop-blur-md border border-white/60 px-5 py-2 rounded-2xl shadow-lg flex items-center gap-2 transform transition-transform group-hover:scale-110">
-                        <span className="relative flex h-3 w-3">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                        </span>
-                        <span className="text-xs font-bold text-gray-700 tracking-wide">GLOBAL NETWORK</span>
-                    </div>
-                </div>
-
-                {/* Floating Tech Icons Orbiting */}
-                <div className="absolute top-0 right-10 p-3 bg-neu-base rounded-2xl shadow-neu animate-bounce text-blue-500 z-20" style={{ animationDuration: '4s' }}>
-                   <Code size={20} />
-                </div>
-                <div className="absolute bottom-10 left-0 p-3 bg-neu-base rounded-2xl shadow-neu animate-bounce text-purple-500 z-20" style={{ animationDuration: '5s', animationDelay: '1s' }}>
-                   <Zap size={20} />
-                </div>
+            {/* 3D Floating Element - Three.js Scene */}
+            <div className="relative flex justify-center items-center h-[500px] w-full max-w-[600px] mx-auto">
+               <HeroScene />
+               
+               {/* Decorative Background for 3D */}
+               <div className="absolute inset-0 bg-blue-500/10 blur-[100px] rounded-full -z-10"></div>
             </div>
 
           </div>
         </section>
 
         {/* SERVICES SECTION */}
-        <section id={SectionId.SERVICES} className="py-24 relative">
+        <section id={SectionId.SERVICES} ref={servicesRef} className="py-24 relative scroll-mt-28">
           <div className="container mx-auto px-6">
-            <div className="text-center mb-16">
+            <div className={`text-center mb-16 transition-all duration-700 transform ${servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <h2 className="text-4xl font-bold text-gray-800 mb-4">Dịch Vụ Cung Cấp</h2>
               <p className="text-gray-500 max-w-xl mx-auto">Giải pháp toàn diện cho nhu cầu kỹ thuật số của bạn, từ thiết kế đến lập trình.</p>
             </div>
@@ -174,9 +144,17 @@ const App: React.FC = () => {
                 { icon: <Code size={40} className="text-blue-500" />, title: "Web Development", desc: "Xây dựng website hiệu năng cao, chuẩn SEO, responsive với các công nghệ mới nhất." },
                 { icon: <Layers size={40} className="text-purple-500" />, title: "3D Visuals", desc: "Tích hợp các yếu tố 3D tương tác và hiệu ứng chuyển động mượt mà vào website." }
               ].map((service, idx) => (
-                <div key={idx} className="group p-8 rounded-3xl bg-neu-base shadow-neu hover:shadow-neu-pressed transition-all duration-300 transform hover:-translate-y-2">
+                <div 
+                  key={idx} 
+                  className={`group p-8 rounded-3xl bg-neu-base shadow-neu hover:shadow-neu-pressed transition-all duration-700 transform hover:-translate-y-2
+                    ${servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}
+                  `}
+                  style={{ transitionDelay: `${idx * 150}ms` }}
+                >
                   <div className="w-16 h-16 rounded-2xl bg-neu-base shadow-neu flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    {service.icon}
+                    <div className="group-hover:animate-bounce">
+                      {service.icon}
+                    </div>
                   </div>
                   <h3 className="text-2xl font-bold text-gray-700 mb-3">{service.title}</h3>
                   <p className="text-gray-500 leading-relaxed">
@@ -189,7 +167,7 @@ const App: React.FC = () => {
         </section>
 
         {/* PORTFOLIO SECTION */}
-        <section id={SectionId.PORTFOLIO} className="py-24">
+        <section id={SectionId.PORTFOLIO} className="py-24 scroll-mt-28">
           <div className="container mx-auto px-6">
             <div className="flex flex-col md:flex-row justify-between items-end mb-12">
               <div>
@@ -280,7 +258,7 @@ const App: React.FC = () => {
         </section>
 
         {/* CONTACT SECTION */}
-        <section id={SectionId.CONTACT} className="py-24 pb-32">
+        <section id={SectionId.CONTACT} className="py-24 pb-32 scroll-mt-28">
           <div className="container mx-auto px-6">
             <div className="max-w-4xl mx-auto bg-neu-base rounded-[3rem] shadow-neu p-8 md:p-12 relative overflow-hidden">
                {/* Decorative Circle */}
