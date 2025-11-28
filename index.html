@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CreativeFlow - Thiết Kế Web Freelance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              neu: {
+                base: '#e0e5ec',
+                light: '#ffffff',
+                dark: '#a3b1c6',
+              }
+            },
+            boxShadow: {
+              'neu': '9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5)',
+              'neu-pressed': 'inset 6px 6px 10px 0 rgba(163,177,198, 0.7), inset -6px -6px 10px 0 rgba(255,255,255, 0.8)',
+              'neu-sm': '5px 5px 10px rgb(163,177,198,0.6), -5px -5px 10px rgba(255,255,255, 0.5)',
+              '3d': '20px 20px 60px #bebebe, -20px -20px 60px #ffffff',
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        background-color: #e0e5ec;
+        color: #4a5568;
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
