@@ -1,5 +1,6 @@
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 
+// With Vite define plugin, process.env.API_KEY is replaced at build time
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const generateResponse = async (history: string[], message: string): Promise<string> => {
