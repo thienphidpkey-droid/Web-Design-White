@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Code, Layout, Smartphone, Mail, Github, Twitter, Linkedin, Palette, Layers, Zap, ExternalLink, Globe } from 'lucide-react';
+import { Code, Layout, Smartphone, Mail, Github, Twitter, Linkedin, Palette, Layers, Zap, ExternalLink, Globe, ArrowUp, Instagram, Dribbble } from 'lucide-react';
 import NeuButton from './components/NeuButton';
 import ChatBot from './components/ChatBot';
 import HeroScene from './components/HeroScene';
@@ -9,6 +9,7 @@ const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<SectionId>(SectionId.HOME);
   const [servicesVisible, setServicesVisible] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   // Smooth scroll handler with offset
   const scrollTo = (id: SectionId) => {
@@ -19,12 +20,18 @@ const App: React.FC = () => {
     }
   };
 
-  // Sticky header state
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Sticky header and Scroll-to-top visibility state
   const [isScrolled, setIsScrolled] = useState(false);
   
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 50);
+      setShowScrollTop(scrollY > 400);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -49,6 +56,13 @@ const App: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
+  const navItems = [
+    { id: SectionId.HOME, label: 'Trang chủ', colorClass: 'text-blue-500' },
+    { id: SectionId.SERVICES, label: 'Dịch vụ', colorClass: 'text-purple-500' },
+    { id: SectionId.PORTFOLIO, label: 'Dự án', colorClass: 'text-pink-500' },
+    { id: SectionId.CONTACT, label: 'Liên hệ', colorClass: 'text-teal-500' }
+  ];
+
   return (
     <div className="min-h-screen bg-neu-base text-gray-700 overflow-x-hidden font-sans selection:bg-purple-200 selection:text-purple-900">
       
@@ -60,27 +74,24 @@ const App: React.FC = () => {
       </div>
 
       {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled ? 'py-2 bg-neu-base/80 backdrop-blur-md shadow-sm' : 'py-6 bg-transparent'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled ? 'py-3 bg-neu-base/90 backdrop-blur-md shadow-sm' : 'py-6 bg-transparent'}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
           <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 cursor-pointer" onClick={() => scrollTo(SectionId.HOME)}>
             CreativeFlow.
           </div>
-          <div className="hidden md:flex gap-8 items-center">
-            {[
-              { id: SectionId.HOME, label: 'Trang chủ' },
-              { id: SectionId.SERVICES, label: 'Dịch vụ' },
-              { id: SectionId.PORTFOLIO, label: 'Dự án' },
-              { id: SectionId.CONTACT, label: 'Liên hệ' }
-            ].map((item) => (
-              <button
+          <div className="hidden md:flex gap-4 items-center">
+            {navItems.map((item) => (
+              <NeuButton
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
-                className={`font-medium transition-colors hover:text-blue-600 ${activeSection === item.id ? 'text-blue-600' : 'text-gray-500'}`}
+                className={`!px-5 !py-2 !text-sm transition-transform hover:scale-105 ${item.colorClass} ${activeSection === item.id ? 'font-bold' : 'font-medium'}`}
+                variant="secondary"
               >
                 {item.label}
-              </button>
+              </NeuButton>
             ))}
-            <NeuButton onClick={() => scrollTo(SectionId.CONTACT)} className="!px-6 !py-2 !text-sm">
+            <div className="w-px h-8 bg-gray-300 mx-2"></div>
+            <NeuButton onClick={() => scrollTo(SectionId.CONTACT)} className="!px-6 !py-2 !text-sm border-2 border-white/50 text-gray-700">
               Bắt đầu ngay
             </NeuButton>
           </div>
@@ -108,7 +119,7 @@ const App: React.FC = () => {
                 Tôi tạo ra những trải nghiệm web độc đáo với phong cách Neumorphism hiện đại và hiệu ứng 3D sống động, giúp thương hiệu của bạn nổi bật.
               </p>
               <div className="flex flex-wrap gap-4">
-                <NeuButton onClick={() => scrollTo(SectionId.PORTFOLIO)}>Xem dự án</NeuButton>
+                <NeuButton onClick={() => scrollTo(SectionId.PORTFOLIO)} className="text-blue-600">Xem dự án</NeuButton>
                 <NeuButton variant="secondary" onClick={() => scrollTo(SectionId.CONTACT)}>Liên hệ tôi</NeuButton>
               </div>
               
@@ -120,11 +131,11 @@ const App: React.FC = () => {
             </div>
 
             {/* 3D Floating Element - Three.js Scene */}
-            <div className="relative flex justify-center items-center h-[500px] w-full max-w-[600px] mx-auto">
+            <div className="relative hidden lg:flex justify-center items-center h-[500px] w-full max-w-[600px] mx-auto">
                <HeroScene />
                
                {/* Decorative Background for 3D */}
-               <div className="absolute inset-0 bg-blue-500/10 blur-[100px] rounded-full -z-10"></div>
+               <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-purple-500/10 blur-[80px] rounded-full -z-10"></div>
             </div>
 
           </div>
@@ -230,7 +241,7 @@ const App: React.FC = () => {
                      <img 
                        src={project.image} 
                        alt={project.title} 
-                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                       className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:opacity-80"
                      />
                      {/* Overlay for text legibility */}
                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-70 transition-opacity duration-300"></div>
@@ -317,15 +328,40 @@ const App: React.FC = () => {
             CreativeFlow.
           </div>
           <div className="flex justify-center gap-8 mb-8 text-gray-500">
-            <span className="cursor-pointer hover:text-blue-500">Instagram</span>
-            <span className="cursor-pointer hover:text-blue-500">Dribbble</span>
-            <span className="cursor-pointer hover:text-blue-500">Behance</span>
+            <a href="#" className="p-3 rounded-full shadow-neu hover:shadow-neu-pressed hover:text-blue-500 hover:scale-110 transition-all duration-300">
+              <Instagram size={24} />
+            </a>
+            <a href="#" className="p-3 rounded-full shadow-neu hover:shadow-neu-pressed hover:text-blue-500 hover:scale-110 transition-all duration-300">
+              <Dribbble size={24} />
+            </a>
+            <a href="#" className="p-3 rounded-full shadow-neu hover:shadow-neu-pressed hover:text-blue-500 hover:scale-110 transition-all duration-300">
+              <Palette size={24} />
+            </a>
           </div>
           <p className="text-gray-400 text-sm">
             © {new Date().getFullYear()} CreativeFlow Design. All rights reserved.
           </p>
         </div>
       </footer>
+      
+      {/* Scroll To Top Button */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-24 right-6 w-12 h-12 bg-neu-base shadow-neu rounded-full flex items-center justify-center text-blue-500 z-40 transition-all duration-500 hover:scale-110 hover:shadow-neu-pressed border border-white/20 ${showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}
+      >
+        <ArrowUp size={24} />
+      </button>
+
+      {/* Floating Call Button (Zalo/Hotline) */}
+      <a href="tel:xxx.xxxx.xxx" className="fixed bottom-6 left-6 z-50 flex items-center gap-2 bg-neu-base p-2 pr-4 rounded-full shadow-neu hover:shadow-neu-pressed transition-all hover:scale-105 active:scale-95 group border border-white/30">
+          <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white shadow-md animate-pulse-slow">
+              <Smartphone size={20} />
+          </div>
+          <div className="flex flex-col">
+              <span className="text-xs text-gray-400 font-medium">Hotline / Zalo</span>
+              <span className="text-sm font-bold text-gray-700 glitch-text">xxx.xxxx.xxx</span>
+          </div>
+      </a>
 
       {/* AI Chat Bot */}
       <ChatBot />
