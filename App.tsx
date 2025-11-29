@@ -196,37 +196,55 @@ const App: React.FC = () => {
                   title: "Heona Media", 
                   cat: "Creative Agency", 
                   url: "https://heonamedia.vercel.app/",
-                  image: "https://i.postimg.cc/1tcCwRGR/heona.png"
+                  image: "https://i.postimg.cc/FzsDt864/media.png"
                 },
                 { 
                   title: "Neon Glide Patin", 
                   cat: "Sports E-commerce", 
                   url: "https://neon-glide-patin.vercel.app/",
-                  image: "https://i.postimg.cc/C1HPkMG0/patin.png"
+                  image: "https://i.postimg.cc/x8TtrhZQ/patin.png"
                 },
                 { 
                   title: "Emerald Estate", 
                   cat: "Real Estate", 
                   url: "https://emerald-estate.vercel.app/",
-                  image: "https://i.postimg.cc/pTYGzVDw/emerald.png"
+                  image: "https://i.postimg.cc/mk28xJnh/bds.png"
                 },
                 { 
                   title: "Sen Mộc Spa", 
                   cat: "Beauty & Wellness", 
                   url: "https://senmocspa.vercel.app/",
-                  image: "https://i.postimg.cc/nzYRBVv6/sen.png"
+                  image: "https://i.postimg.cc/yxYvqtG6/spa.png"
                 },
                 { 
                   title: "Minh An Studio", 
                   cat: "Photography Portfolio", 
                   url: "https://minh-an-studio.vercel.app/",
-                  image: "https://i.postimg.cc/wMF07Wh0/minhan_(2).png"
+                  image: "https://i.postimg.cc/5yNncTrt/chup_anh.png"
                 },
                 { 
                   title: "Nha Khoa T-M-C", 
                   cat: "Medical Clinic", 
                   url: "https://nha-khoa-t-m-c.vercel.app/",
-                  image: "https://i.postimg.cc/C5JmzvjQ/rang.png"
+                  image: "https://i.postimg.cc/prXqN46g/rang.png"
+                },
+                { 
+                  title: "Web design CreativeFlow", 
+                  cat: "Design Studio", 
+                  url: "#",
+                  image: "https://i.postimg.cc/cC4Xq2zg/web.png"
+                },
+                { 
+                  title: "Camera Pro", 
+                  cat: "Photography Gear", 
+                  url: "https://camera-pro-studio.vercel.app/",
+                  image: "https://i.postimg.cc/mk28xJnh/bds.png"
+                },
+                { 
+                  title: "English Note Center", 
+                  cat: "Education", 
+                  url: "https://english-note-center.vercel.app/",
+                  image: "https://i.postimg.cc/kGXfrzH2/tieng_anh.png"
                 },
               ].map((project, idx) => (
                 <a 
