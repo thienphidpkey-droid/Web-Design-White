@@ -99,13 +99,6 @@ const App: React.FC = () => {
   const [servicesVisible, setServicesVisible] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const [showAllProjects, setShowAllProjects] = useState(false);
-
-  // Randomly select 6 featured projects
-  const featuredProjects = useMemo(() => {
-    const shuffled = [...ALL_PROJECTS].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 6);
-  }, []);
 
   // Smooth scroll handler with offset
   const scrollTo = (id: SectionId) => {
@@ -155,8 +148,7 @@ const App: React.FC = () => {
   const navItems = [
     { id: SectionId.HOME, label: 'Trang chủ', colorClass: 'text-blue-500' },
     { id: SectionId.SERVICES, label: 'Dịch vụ', colorClass: 'text-purple-500' },
-    { id: SectionId.PORTFOLIO, label: 'Dự án nổi bật', colorClass: 'text-pink-500' },
-    { id: SectionId.PROJECTS, label: 'Tất cả dự án', colorClass: 'text-orange-500' },
+    { id: SectionId.PROJECTS, label: 'Dự án', colorClass: 'text-pink-500' },
     { id: SectionId.CONTACT, label: 'Liên hệ', colorClass: 'text-teal-500' }
   ];
 
@@ -216,7 +208,7 @@ const App: React.FC = () => {
                 Tôi tạo ra những trải nghiệm web độc đáo với phong cách Neumorphism hiện đại và hiệu ứng 3D sống động, giúp thương hiệu của bạn nổi bật.
               </p>
               <div className="flex flex-wrap gap-4">
-                <NeuButton onClick={() => scrollTo(SectionId.PORTFOLIO)} className="text-blue-600">Xem dự án</NeuButton>
+                <NeuButton onClick={() => scrollTo(SectionId.PROJECTS)} className="text-blue-600">Xem dự án</NeuButton>
                 <NeuButton variant="secondary" onClick={() => scrollTo(SectionId.CONTACT)}>Liên hệ tôi</NeuButton>
               </div>
 
@@ -274,60 +266,9 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        {/* PORTFOLIO SECTION */}
-        <section id={SectionId.PORTFOLIO} className="py-24 scroll-mt-28">
-          <div className="container mx-auto px-6">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-12">
-              <div>
-                <h2 className="text-4xl font-bold text-gray-800 mb-2">Dự Án Nổi Bật</h2>
-                <p className="text-gray-500">Các website tôi đã thiết kế và xây dựng.</p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-              {featuredProjects.map((project, idx) => (
-                <a
-                  key={idx}
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="relative group rounded-3xl bg-neu-base shadow-neu overflow-hidden aspect-[4/3] cursor-pointer hover:shadow-neu-pressed transition-all duration-300 block"
-                >
-                  {/* Image Background */}
-                  <div className="absolute inset-0">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:opacity-80"
-                    />
-                    {/* Overlay for text legibility */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-70 transition-opacity duration-300"></div>
-                  </div>
-
-                  {/* Overlay Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                    <div className="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-lg flex justify-between items-center hover:bg-white/20 transition-colors">
-                      <div>
-                        <h3 className="text-lg font-bold text-white mb-1 drop-shadow-md">{project.title}</h3>
-                        <p className="text-white/80 text-xs font-medium uppercase tracking-wider">{project.cat}</p>
-                      </div>
-                      <div className="bg-white/20 p-2 rounded-full text-white hover:bg-blue-500 hover:text-white transition-all">
-                        <ExternalLink size={16} />
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              ))}
-            </div>
-            <div className="mt-12 flex justify-center">
-              <NeuButton onClick={() => scrollTo(SectionId.PROJECTS)}>Xem tất cả dự án</NeuButton>
-            </div>
-          </div>
-        </section>
-
-        {/* ALL PROJECTS SECTION */}
+        {/* PROJECTS SECTION */}
         <section id={SectionId.PROJECTS} className="py-24 scroll-mt-28">
-          <Projects projects={ALL_PROJECTS} onBackClick={() => scrollTo(SectionId.PORTFOLIO)} />
+          <Projects projects={ALL_PROJECTS} />
         </section>
 
         {/* CONTACT SECTION */}
