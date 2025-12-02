@@ -92,6 +92,12 @@ const ALL_PROJECTS: ProjectItem[] = [
     url: "https://liquid-automation.vercel.app/",
     image: "https://i.postimg.cc/placeholder5.png"
   },
+  {
+    title: "Notebook Flips",
+    cat: "Interactive Notebook",
+    url: "https://notebook-flips.vercel.app/",
+    image: "https://i.postimg.cc/placeholder6.png"
+  },
 ];
 
 const App: React.FC = () => {
