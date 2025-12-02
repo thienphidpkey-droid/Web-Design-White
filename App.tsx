@@ -83,7 +83,7 @@ const ALL_PROJECTS: ProjectItem[] = [
   {
     title: "Business Automation",
     cat: "SaaS Platform",
-    url: "https://business-automation.vercel.app/",
+    url: "https://business-automation-ten.vercel.app/",
     image: "https://i.postimg.cc/placeholder4.png"
   },
   {
