@@ -246,6 +246,30 @@ const App: React.FC = () => {
                   url: "https://english-note-center.vercel.app/",
                   image: "https://i.postimg.cc/kGXfrzH2/tieng_anh.png"
                 },
+                {
+                  title: "Luxe Bijoux",
+                  cat: "Luxury Jewelry",
+                  url: "https://luxe-bijoux.vercel.app/",
+                  image: "https://i.postimg.cc/placeholder1.png"
+                },
+                {
+                  title: "Luxury Fashion",
+                  cat: "Fashion E-commerce",
+                  url: "https://luxury-fashion.vercel.app/",
+                  image: "https://i.postimg.cc/placeholder2.png"
+                },
+                {
+                  title: "Portfolio",
+                  cat: "Creative Portfolio",
+                  url: "https://portfolio-thienphidpkey-droids-projects.vercel.app/",
+                  image: "https://i.postimg.cc/placeholder3.png"
+                },
+                {
+                  title: "Business Automation",
+                  cat: "SaaS Platform",
+                  url: "https://business-automation.vercel.app/",
+                  image: "https://i.postimg.cc/placeholder4.png"
+                },
               ].map((project, idx) => (
                 <a
                   key={idx}
