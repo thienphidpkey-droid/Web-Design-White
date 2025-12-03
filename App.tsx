@@ -12,91 +12,91 @@ const ALL_PROJECTS: ProjectItem[] = [
     title: "Heona Media",
     cat: "Creative Agency",
     url: "https://heonamedia.vercel.app/",
-    image: "https://i.postimg.cc/FzsDt864/media.png"
+    image: "https://i.postimg.cc/nLs1yFp1/a1.jpg"
   },
   {
     title: "Neon Glide Patin",
     cat: "Sports E-commerce",
     url: "https://neon-glide-patin.vercel.app/",
-    image: "https://i.postimg.cc/x8TtrhZQ/patin.png"
+    image: "https://i.postimg.cc/MGcYC6qt/a2.jpg"
   },
   {
     title: "Emerald Estate",
     cat: "Real Estate",
     url: "https://emerald-estate.vercel.app/",
-    image: "https://i.postimg.cc/mk28xJnh/bds.png"
+    image: "https://i.postimg.cc/XvZgRj4K/a3.jpg"
   },
   {
     title: "Sen Mộc Spa",
     cat: "Beauty & Wellness",
     url: "https://senmocspa.vercel.app/",
-    image: "https://i.postimg.cc/yxYvqtG6/spa.png"
+    image: "https://i.postimg.cc/2SHDHwSh/spa-nedir.jpg"
   },
   {
     title: "Minh An Studio",
     cat: "Photography Portfolio",
     url: "https://minh-an-studio.vercel.app/",
-    image: "https://i.postimg.cc/5yNncTrt/chup_anh.png"
+    image: "https://i.postimg.cc/g0wKCzmq/a5.jpg"
   },
   {
     title: "Nha Khoa T-M-C",
     cat: "Medical Clinic",
     url: "https://nha-khoa-t-m-c.vercel.app/",
-    image: "https://i.postimg.cc/prXqN46g/rang.png"
+    image: "https://i.postimg.cc/g0wKCzmq/a5.jpg"
   },
   {
     title: "Web design CreativeFlow",
     cat: "Design Studio",
     url: "#",
-    image: "https://i.postimg.cc/cC4Xq2zg/web.png"
+    image: "https://i.postimg.cc/KYK56GxT/a7.jpg"
   },
   {
     title: "Camera Pro",
     cat: "Photography Gear",
     url: "https://camerapro-eight.vercel.app/",
-    image: "https://i.postimg.cc/90FJ3Kkq/camera.png"
+    image: "https://i.postimg.cc/hGJ0kDcz/a8.jpg"
   },
   {
     title: "English Note Center",
     cat: "Education",
     url: "https://english-note-center.vercel.app/",
-    image: "https://i.postimg.cc/kGXfrzH2/tieng_anh.png"
+    image: "https://i.postimg.cc/LsqVc92J/a9.jpg"
   },
   {
     title: "Luxe Bijoux",
     cat: "Luxury Jewelry",
     url: "https://luxe-bijoux.vercel.app/",
-    image: "https://i.postimg.cc/placeholder1.png"
+    image: "https://i.postimg.cc/jS3X3w0N/a10.jpg"
   },
   {
     title: "Luxury Fashion",
     cat: "Fashion E-commerce",
     url: "https://luxury-fashion.vercel.app/",
-    image: "https://i.postimg.cc/placeholder2.png"
+    image: "https://i.postimg.cc/mgpwpzfF/a11.jpg"
   },
   {
     title: "Portfolio",
     cat: "Creative Portfolio",
     url: "https://portfolio-thienphidpkey-droids-projects.vercel.app/",
-    image: "https://i.postimg.cc/placeholder3.png"
+    image: "https://i.postimg.cc/JzYqYDV0/a12.jpg"
   },
   {
     title: "Business Automation",
     cat: "SaaS Platform",
     url: "https://business-automation-ten.vercel.app/",
-    image: "https://i.postimg.cc/placeholder4.png"
+    image: "https://i.postimg.cc/Mp3D3M2X/a13.jpg"
   },
   {
     title: "Liquid Automation",
     cat: "Automation Platform",
     url: "https://liquid-automation.vercel.app/",
-    image: "https://i.postimg.cc/placeholder5.png"
+    image: "https://i.postimg.cc/DwpgpJkw/a14.jpg"
   },
   {
     title: "Notebook Flips",
     cat: "Interactive Notebook",
     url: "https://notebook-flips.vercel.app/",
-    image: "https://i.postimg.cc/placeholder6.png"
+    image: "https://i.postimg.cc/2S9w9bRj/a15.jpg"
   },
 ];
 
