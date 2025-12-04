@@ -282,7 +282,7 @@ const App: React.FC = () => {
             <div className="relative hidden lg:flex flex-col justify-center items-center w-full max-w-[800px] mx-auto space-y-6">
               <div className="h-[600px] w-full relative">
                 <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-gray-400">Loading 3D Scene...</div>}>
-                  <ProjectCarousel projects={ALL_PROJECTS.slice(0, 5)} />
+                  <ProjectCarousel projects={ALL_PROJECTS.slice(0, 6)} />
                 </Suspense>
 
                 {/* Decorative Background for 3D */}
