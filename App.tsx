@@ -11,6 +11,12 @@ const ProjectCarousel = lazy(() => import('./components/ProjectCarousel'));
 // All projects data
 const ALL_PROJECTS: ProjectItem[] = [
   {
+    title: "VELORAH | AI Agency",
+    cat: "AI & Creative Studio",
+    url: "https://velorah-pi.vercel.app/",
+    image: "/projects/velorah.png"
+  },
+  {
     title: "Nova Creative Agency",
     cat: "Creative Agency",
     url: "https://nova-creative-agency.vercel.app/",
