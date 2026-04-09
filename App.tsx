@@ -11,6 +11,12 @@ const ProjectCarousel = lazy(() => import('./components/ProjectCarousel'));
 // All projects data
 const ALL_PROJECTS: ProjectItem[] = [
   {
+    title: "Gốm Bàu Trúc",
+    cat: "Cultural & Pottery Art",
+    url: "https://g-m-b-u-tr-c.vercel.app/",
+    image: "/projects/gom-bau-truc.png"
+  },
+  {
     title: "VELORAH | AI Agency",
     cat: "AI & Creative Studio",
     url: "https://velorah-pi.vercel.app/",
@@ -53,10 +59,10 @@ const ALL_PROJECTS: ProjectItem[] = [
     image: "https://i.postimg.cc/g0wKCzmq/a5.jpg"
   },
   {
-    title: "Nha Khoa T-M-C",
+    title: "Nha Khoa Tâm Đức",
     cat: "Medical Clinic",
     url: "https://nha-khoa-t-m-c.vercel.app/",
-    image: "https://i.postimg.cc/g0wKCzmq/a5.jpg"
+    image: "https://i.postimg.cc/DzWc9vnb/a6.jpg"
   },
   {
     title: "Web design CreativeFlow",
@@ -103,7 +109,7 @@ const ALL_PROJECTS: ProjectItem[] = [
   {
     title: "WanderLust",
     cat: "Travel App",
-    url: "#",
+    url: "https://liquid-automation.vercel.app/",
     image: "https://i.postimg.cc/QxRPkcns/download_(22).png"
   },
   {
