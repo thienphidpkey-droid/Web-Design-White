@@ -11,6 +11,18 @@ const ProjectCarousel = lazy(() => import('./components/ProjectCarousel'));
 // All projects data
 const ALL_PROJECTS: ProjectItem[] = [
   {
+    title: "Kinetic Noir",
+    cat: "Neural Mobility & Automotive",
+    url: "https://kinetic-noir-tau.vercel.app/",
+    image: "/projects/kinetic-noir.png"
+  },
+  {
+    title: "CORE_EARTH",
+    cat: "Ceramics & Craft Art",
+    url: "https://the-curated-earth.vercel.app/",
+    image: "/projects/core-earth.png"
+  },
+  {
     title: "Gốm Bàu Trúc",
     cat: "Cultural & Pottery Art",
     url: "https://g-m-b-u-tr-c.vercel.app/",
