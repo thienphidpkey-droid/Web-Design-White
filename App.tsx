@@ -11,6 +11,24 @@ const ProjectCarousel = lazy(() => import('./components/ProjectCarousel'));
 // All projects data
 const ALL_PROJECTS: ProjectItem[] = [
   {
+    title: "Velocity Digital",
+    cat: "Professional Running & Sports",
+    url: "https://velocity-digital.vercel.app/",
+    image: "/projects/velocity-digital.png"
+  },
+  {
+    title: "Luxora",
+    cat: "Luxury Watch Collections",
+    url: "https://luxora-timeless-elegance.vercel.app/",
+    image: "/projects/luxora.png"
+  },
+  {
+    title: "Lullaby Massage",
+    cat: "Wellness & Spa",
+    url: "https://lullaby-massage-l2la.vercel.app/",
+    image: "/projects/lullaby-massage.png"
+  },
+  {
     title: "Kinetic Noir",
     cat: "Neural Mobility & Automotive",
     url: "https://kinetic-noir-tau.vercel.app/",
