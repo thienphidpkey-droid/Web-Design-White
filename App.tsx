@@ -11,6 +11,18 @@ const ProjectCarousel = lazy(() => import('./components/ProjectCarousel'));
 // All projects data
 const ALL_PROJECTS: ProjectItem[] = [
   {
+    title: "Cosplay Store",
+    cat: "Cosplay & Anime E-commerce",
+    url: "https://cosplay-store.vercel.app/",
+    image: "/projects/cosplay-store.png"
+  },
+  {
+    title: "Street Impact Fashion",
+    cat: "Streetwear Fashion",
+    url: "https://street-impact-fashion.vercel.app/",
+    image: "/projects/street-impact-fashion.png"
+  },
+  {
     title: "Velocity Digital",
     cat: "Professional Running & Sports",
     url: "https://velocity-digital.vercel.app/",
