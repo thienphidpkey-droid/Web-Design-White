@@ -166,6 +166,12 @@ const ALL_PROJECTS: ProjectItem[] = [
     url: "https://glass-morphism-portfolio.vercel.app/",
     image: "https://i.postimg.cc/kXF18L8D/download-(23).png"
   },
+  {
+    title: "Maison Or",
+    cat: "Luxury Perfume Boutique",
+    url: "https://maison-or-luxury-perfume-boutique.vercel.app/",
+    image: "/projects/maison-or.png"
+  },
 ];
 
 const App: React.FC = () => {
