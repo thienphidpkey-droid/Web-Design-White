@@ -172,6 +172,12 @@ const ALL_PROJECTS: ProjectItem[] = [
     url: "https://maison-or-luxury-perfume-boutique.vercel.app/",
     image: "/projects/maison-or.png"
   },
+  {
+    title: "Gundam Armory",
+    cat: "Mecha & Model Kits",
+    url: "https://gundam-armory.vercel.app/",
+    image: "/projects/gundam-armory.png"
+  }
 ];
 
 const App: React.FC = () => {
