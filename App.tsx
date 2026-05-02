@@ -6,7 +6,6 @@ import { SectionId, ProjectItem } from './types';
 
 // Lazy load heavy components
 const ChatBot = lazy(() => import('./components/ChatBot'));
-const ProjectCarousel = lazy(() => import('./components/ProjectCarousel'));
 
 // All projects data
 const ALL_PROJECTS: ProjectItem[] = [
@@ -323,9 +322,9 @@ const App: React.FC = () => {
 
         {/* HERO SECTION */}
         <section id={SectionId.HOME} className="min-h-screen flex items-center justify-center pt-20 relative scroll-mt-28">
-          <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="container mx-auto px-6 flex flex-col items-center text-center max-w-4xl">
 
-            <div className="space-y-8 animate-in slide-in-from-left duration-1000 z-20">
+            <div className="space-y-8 animate-in slide-in-from-left duration-1000 z-20 flex flex-col items-center">
               <div className="inline-block px-4 py-2 rounded-full shadow-neu-pressed bg-neu-base text-blue-500 font-semibold text-sm">
                 👋 Freelance Web Designer & Developer
               </div>
@@ -335,34 +334,13 @@ const App: React.FC = () => {
                   Hiện Thực Số
                 </span>
               </h1>
-              <p className="text-lg text-gray-500 max-w-lg leading-relaxed">
-                Tôi tạo ra những trải nghiệm web độc đáo với phong cách Neumorphism hiện đại và hiệu ứng 3D sống động, giúp thương hiệu của bạn nổi bật.
+              <p className="text-lg text-gray-500 max-w-2xl leading-relaxed mx-auto">
+                Tôi tạo ra những trải nghiệm web độc đáo với phong cách Neumorphism hiện đại và hiệu ứng UI/UX sống động, giúp thương hiệu của bạn nổi bật.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <NeuButton onClick={() => scrollTo(SectionId.PROJECTS)} className="text-blue-600">Xem dự án</NeuButton>
-                <NeuButton variant="secondary" onClick={() => scrollTo(SectionId.CONTACT)}>Liên hệ tôi</NeuButton>
+              <div className="flex flex-wrap justify-center gap-6 mt-4">
+                <NeuButton onClick={() => scrollTo(SectionId.PROJECTS)} className="text-blue-600 !px-8 !py-4 font-bold text-lg">Khám phá Dự án</NeuButton>
+                <NeuButton variant="secondary" onClick={() => scrollTo(SectionId.CONTACT)} className="!px-8 !py-4 font-bold text-lg text-gray-600">Liên hệ ngay</NeuButton>
               </div>
-            </div>
-
-            {/* 3D Floating Element - Three.js Scene */}
-            <div className="relative hidden lg:flex flex-col justify-center items-center w-full max-w-[800px] mx-auto space-y-6">
-              <div className="h-[600px] w-full relative">
-                <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-gray-400">Loading 3D Scene...</div>}>
-                  <ProjectCarousel projects={ALL_PROJECTS.slice(0, 6)} />
-                </Suspense>
-
-                {/* Decorative Background for 3D */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-purple-500/10 blur-[80px] rounded-full -z-10"></div>
-              </div>
-
-              {/* View All Projects Button */}
-              <NeuButton
-                onClick={() => scrollTo(SectionId.PROJECTS)}
-                className="!px-8 !py-3 text-purple-600 font-semibold flex items-center gap-2"
-              >
-                Xem toàn bộ dự án
-                <ExternalLink size={18} />
-              </NeuButton>
             </div>
 
           </div>
