@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import './index.css';
 import Sidebar from './components/Sidebar';
 import Hero from './components/Hero';
@@ -15,11 +15,10 @@ const SECTIONS = ['intro', 'featured', 'archive', 'about', 'contact'];
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('intro');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const observerRef = useRef<IntersectionObserver | null>(null);
 
   // Intersection observer for active section tracking
   useEffect(() => {
-    observerRef.current = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting && entry.intersectionRatio >= 0.2) {
@@ -35,10 +34,10 @@ const App: React.FC = () => {
 
     SECTIONS.forEach((id) => {
       const el = document.getElementById(id);
-      if (el) observerRef.current?.observe(el);
+      if (el) observer.observe(el);
     });
 
-    return () => observerRef.current?.disconnect();
+    return () => observer.disconnect();
   }, []);
 
   const handleProjectClick = useCallback((project: Project) => {

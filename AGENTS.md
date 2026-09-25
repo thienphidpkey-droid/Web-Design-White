@@ -29,11 +29,15 @@ Web-Design-White/
 │   ├── Sidebar.tsx              # Fixed left sidebar (01-05 nav, active dots, social links) + Mobile top nav
 │   ├── Hero.tsx                 # Split hero, browser mockup preview, GSAP staggered text entrance
 │   ├── FeaturedWork.tsx         # 5 selected project cards with hover zoom & border reveal
-│   ├── ProjectArchive.tsx       # Interactive split archive (42/58 desktop ratio, list + sticky preview) + Mobile view
+│   ├── ProjectArchive.tsx       # Coordinator component managing archive state & transition timers
 │   ├── ProjectModal.tsx         # Full-screen project detail overlay (ESC key & backdrop close)
 │   ├── About.tsx                # Split portrait image section, personality statement, stats grid
 │   ├── Contact.tsx              # Minimal contact form with focus-activated purple underline
-│   └── Footer.tsx               # Minimal single-line footer
+│   ├── Footer.tsx               # Minimal single-line footer
+│   └── archive/                 # Modular archive sub-components
+│       ├── ArchiveHeader.tsx        # Section header, project counts, desktop tabs & mobile dropdown
+│       ├── ArchiveDesktopView.tsx   # 42/58 split view (list + sticky preview with actions)
+│       └── ArchiveMobileView.tsx    # Responsive mobile layout (featured card + thumbnail list)
 ├── public/
 │   ├── llms.txt                 # AI discovery summary (llmstxt.org standard)
 │   ├── llms-full.txt            # Full plaintext AI document for one-shot retrieval

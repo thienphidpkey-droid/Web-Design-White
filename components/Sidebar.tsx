@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Instagram, Github, ExternalLink } from 'lucide-react';
 
 interface SidebarProps {

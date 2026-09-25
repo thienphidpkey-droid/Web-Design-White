@@ -18,9 +18,9 @@
   ],
   "screenshots": [
     {
-      "src": "/hero_mockup.jpg",
+      "src": "/hero_mockup.webp",
       "sizes": "1200x900",
-      "type": "image/jpeg",
+      "type": "image/webp",
       "label": "FEN Portfolio Homepage"
     }
   ]
